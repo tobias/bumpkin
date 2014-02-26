@@ -1,4 +1,11 @@
 require 'ostruct'
+require 'pp'
+
+class ::OpenStruct
+  def pretty_print(pp)
+    pp.pp_hash(self.to_h)
+  end
+end
 
 module Bumpkin
   GLOBAL_ENV = {

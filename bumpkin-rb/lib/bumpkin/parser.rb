@@ -38,6 +38,10 @@ module Bumpkin
   end
 
   def self.parse(str)
-    Transform.new.apply(Parser.new.parse_with_debug(str))
+    Parser.new.parse_with_debug(str)
+  end
+
+  def self.transform(tree)
+    Transform.new.apply(tree)
   end
 end

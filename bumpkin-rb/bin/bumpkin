@@ -1,5 +1,18 @@
 #!/usr/bin/env ruby
 
 require 'bumpkin'
+require 'optparse'
 
-Bumpkin.run_file(ARGV[0])
+options = {}
+
+file_args = OptionParser.new do |opts|
+  opts.on("-d", "--dump-tree") do |d|
+    options[:dump] = d
+  end
+
+  opts.on("-e", "--execute CODE") do |code|
+    options[:exec] = code
+  end
+end.parse(ARGV)
+
+Bumpkin.run(options, file_args)
