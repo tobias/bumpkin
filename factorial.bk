@@ -1,0 +1,21 @@
+` comments start with ` and must be on a line by themselves
+
+` function defs are: name param1 param2: body
+` function calls are: name[arg1 arg2]
+` 0 is false, anything else is true
+` if statements are: (conditional) if-branch | else-branch
+` two functions are provided by the 'stdlib': - and print
+
+` defines equality for ints
+= x y: (-[x y]) 0 | 1
+
+` defines addition in terms of -
++ a b: -[a -[0 b]]
+
+` a recursive definition of * using + and -
+* a b: (=[b 0]) 0 | +[a *[a -[b 1]]]
+
+` defines factorial
+! n: (=[n 1]) 1 | *[n ![-[n 1]]]
+
+print[![4]]

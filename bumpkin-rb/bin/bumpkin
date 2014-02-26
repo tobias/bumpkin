@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'bumpkin'
+
+Bumpkin.run_file(ARGV[0])
