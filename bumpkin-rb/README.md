@@ -1,29 +1,21 @@
 # Bumpkin
 
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'bumpkin'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install bumpkin
+A ruby implementation of bumpkin.
 
 ## Usage
 
-TODO: Write usage instructions here
+1. `gem build bumpkin.gemspec`
+2. `gem install bumpkin-0.0.1.gem`
+3. `bumpkin ../factorial.bk`
 
-## Contributing
+You can also execute arbitrary strings of bumpkin with `-e`:
 
-1. Fork it ( http://github.com/<my-github-username>/bumpkin/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+    bumpkin -e "print[-[5 4]]"
+    
+and dump the intermediate and final ASTs with `--dump-tree`:
+
+    bumpkin -e "print[-[5 4]]" --dump-tree
+
+or 
+
+    bumpkin --dump-tree ../factorial.bk

@@ -1,14 +1,14 @@
 # bumpkin-clj
 
-A Clojure library designed to ... well, that part is up to you.
+A clojure implementation of bumpkin.
 
 ## Usage
 
-FIXME
+`lein run ../factorial.bk`
 
 ## License
 
-Copyright © 2014 FIXME
+Copyright © 2014 Tobias Crawley
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
