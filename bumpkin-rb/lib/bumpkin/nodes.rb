@@ -24,7 +24,8 @@ module Bumpkin
       env[self]
     end
   end
-  
+
+  # {cond: cond_expr, tbranch: true_expr, fbranch: false_expr}
   class If < OpenStruct
     def evaluate(env)
       if cond.evaluate(env) != 0
@@ -35,6 +36,7 @@ module Bumpkin
     end
   end
 
+  # {name: sym, body: body_expr, params: [param1, param2, ...]}
   class Fundef < OpenStruct
     def evaluate(env)
       GLOBAL_ENV[name] = lambda do |env, *args|
@@ -43,13 +45,18 @@ module Bumpkin
     end
   end
 
+  # {fn: fn_sym, args: [arg_expr1, arg_expr2, ...]}
   class Funcall < OpenStruct
     def evaluate(env)
       local_env = GLOBAL_ENV.clone.merge(env)
-      fn.evaluate(local_env).call(local_env, *(args.map { |arg| arg.evaluate(local_env) }))
+      fn.evaluate(local_env).call(local_env,
+                                  *(args.map { |arg|
+                                      arg.evaluate(local_env)
+                                    }))
     end
   end
 
+  # {program: [expr1, expr2, ...]}
   class Program < OpenStruct
     def evaluate()
       program.map { |expr| expr.evaluate(GLOBAL_ENV) }.last
